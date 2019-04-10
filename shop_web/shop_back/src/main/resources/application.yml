@@ -1,4 +1,11 @@
-
 spring:
   thymeleaf:
     cache: false
+dubbo:
+  application:
+    name: back_web
+  registry:
+    address: zookeeper://192.168.72.128:2181
+  #没有服务端也能发布
+  consumer:
+    check: false
