@@ -5,6 +5,30 @@ spring:
     username: root
     password: 123
     url: jdbc:mysql:///shop1810
+    #使用druid连接池
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      min-idle: 5
+      max-active: 100
+      initial-size: 5
+      max-wait: 60000
+      #配置druid监控中心
+      stat-view-servlet:
+        #开启监控中心
+        enabled: true
+        #配置监控的地址
+        url-pattern: /druid/*
+        #配置监控中心的账号密码
+        login-username: admin
+        login-password: admin
+        #白名单
+        allow: 127.0.0.1
+      #设置过滤器监控中心才能启动
+      web-stat-filter:
+        url-pattern: /*
+        enabled: true
+
+
 dubbo:
   application:
     name: goods_service

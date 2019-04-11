@@ -28,7 +28,7 @@ public class Goods implements Serializable {
     @TableField("good_image")
     private String goodImage;
     private int status;
-    private Date createtime;
+    private Date createtime=new Date();
     private int tid;
 
 }
