@@ -1,0 +1,17 @@
+#server端口
+server:
+  port: 9091
+#dubbo协议
+dubbo:
+  application:
+    name: search_service
+  registry:
+    address: zookeeper://192.168.72.128:2181
+  protocol:
+    name: dubbo
+    port: 20882
+  #配置solr索引库
+spring:
+  data:
+    solr:
+      host: http://192.168.72.128:8080/solr

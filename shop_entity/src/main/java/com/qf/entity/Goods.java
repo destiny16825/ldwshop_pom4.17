@@ -1,6 +1,8 @@
 package com.qf.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,6 +18,7 @@ import java.util.Date;
 @TableName("goods")
 public class Goods implements Serializable {
 
+    @TableId(type = IdType.AUTO)//mabatis-plus主键回填
     private int id;
     @TableField("good_name")
     private String goodName;
@@ -23,7 +26,7 @@ public class Goods implements Serializable {
     private BigDecimal goodPrice;
     @TableField("good_save")
     private int goodSave;
-    @TableField("good_name")
+    @TableField("good_info")
     private String goodInfo;
     @TableField("good_image")
     private String goodImage;
