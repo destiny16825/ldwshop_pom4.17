@@ -1,5 +1,8 @@
 package com.qf.shop_search;
 
+import com.alibaba.dubbo.config.annotation.Reference;
+import com.qf.entity.Goods;
+import com.qf.service.IGoodsService;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
@@ -14,12 +17,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ShopSearchApplicationTests {
     @Autowired
     private SolrClient solrClient;
+
+    @Reference
+    private IGoodsService goodsService;
 
     @Test
     public void add(){
@@ -43,8 +50,13 @@ public class ShopSearchApplicationTests {
 
     @Test
     public void delete() throws IOException, SolrServerException {
-        solrClient.deleteById("22");
+       /* List<Goods> goodsList = goodsService.queryAll();
+        for (Goods goods : goodsList) {
+            solrClient.deleteById(goods.getId()+"");
+            solrClient.commit();
+        }*/
         //solrClient.deleteByQuery("goodName:华为手机");
+        solrClient.deleteById("31");
         solrClient.commit();
     }
 
@@ -65,6 +77,29 @@ public class ShopSearchApplicationTests {
             String goodImage = (String) document.get("goodImage");
 
             System.out.println(id +"，"+goodName+","+goodInfo+","+goodPrice+","+goodSave+","+goodImage);
+        }
+    }
+
+    /**
+     * 将数据库同步到solr索引库
+     */
+    @Test
+    public void insertByMysql(){
+        List<Goods> goodsList = goodsService.queryAll();
+        for (Goods goods : goodsList) {
+            SolrInputDocument solrInputFields=new SolrInputDocument();
+            solrInputFields.addField("id",goods.getId());
+            solrInputFields.addField("goodName",goods.getGoodName());
+            solrInputFields.addField("goodInfo",goods.getGoodInfo());
+            solrInputFields.addField("goodImage",goods.getGoodImage());
+            solrInputFields.addField("goodSave",goods.getGoodSave());
+            solrInputFields.addField("goodPrice",goods.getGoodPrice());
+            try {
+                solrClient.add(solrInputFields);
+                solrClient.commit();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
