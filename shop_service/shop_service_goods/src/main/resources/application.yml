@@ -27,8 +27,15 @@ spring:
       web-stat-filter:
         url-pattern: /*
         enabled: true
+  #配置rabbitMQ
+  rabbitmq:
+    host: 192.168.72.128
+    port: 5672
+    username: admin
+    password: admin
+    virtual-host: /admin
 
-
+#dubbo监控中心
 dubbo:
   application:
     name: goods_service
@@ -39,3 +46,5 @@ dubbo:
     port: 20881
 server:
   port: 9090
+
+

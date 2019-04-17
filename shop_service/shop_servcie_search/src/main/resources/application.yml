@@ -15,3 +15,10 @@ spring:
   data:
     solr:
       host: http://192.168.72.128:8080/solr
+  #配置消息中间件
+  rabbitmq:
+    host: 192.168.72.128
+    port: 5672
+    username: admin
+    password: admin
+    virtual-host: /admin

@@ -66,6 +66,12 @@
 			<version>0.2.0</version>
 		</dependency>
 
+		<!--6.rabitmq依赖-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
+
 
 	</dependencies>
 

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--suppress All-->
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <base th:href="|${#request.getContextPath() + '/'}|"/>
@@ -705,8 +706,8 @@
             <ul>
                 <li th:each="good : ${goodList}">
                     <dl>
-                        <dt><a><img th:src="|http://192.168.72.128/${#strings.setSplit(good.goodImage, '|')[0]}|" src="images/21151da3bdefc6d9a7120c991fe59800.jpg_small.jpg" /></a></dt>
-                        <dd class="title"><a th:utext="${good.goodName}">OCIAIZO春装水洗做旧短外套复古磨白短款牛仔外套春01C1417</a></dd>
+                        <dt><a th:href="|http://localhost:8083/page/${good.id}.html|"><img th:src="|http://192.168.72.128/${#strings.setSplit(good.goodImage, '|')[0]}|" src="images/21151da3bdefc6d9a7120c991fe59800.jpg_small.jpg" /></a></dt>
+                        <dd class="title"><a th:href="|http://localhost:8083/page/${good.id}.html|" th:utext="${good.goodName}">OCIAIZO春装水洗做旧短外套复古磨白短款牛仔外套春01C1417</a></dd>
                         <dd class="content">
                             <span class="goods_jiage"><strong th:text="${#numbers.formatCurrency(good.goodPrice)}">249.00</strong></span>
                             <span class="goods_chengjiao">库存：<a th:text="${good.goodSave}">100</a></span>

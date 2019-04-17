@@ -67,9 +67,13 @@ public class SearchServiceImpl implements ISerachService {
                 goodsList.add(goods);
 
                 //判断是否有高亮内容(高亮集合的第一个参数是id,所有直接判断是否包含商品的id)
-                if (highlighting.containsKey(goods.getId()+"")){
-                    //有高亮内容集合
-                    Map<String, List<String>> goodsHightlist = highlighting.get(goods.getId() + "");
+                System.out.println("highlighting："+highlighting);
+
+                //有高亮内容集合
+                System.out.println("get后的值："+highlighting.get(goods.getId() + ""));
+                Map<String, List<String>> goodsHightlist = highlighting.get(goods.getId() + "");
+                System.out.println("list里的值："+goodsHightlist.get("goodName"));
+                if(goodsHightlist.get("goodName")!=null){
                     //获得高亮的内容（goodName）
                     String goodName = goodsHightlist.get("goodName").get(0);
                     //将高亮内容替换到goods对象中

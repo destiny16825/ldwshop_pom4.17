@@ -43,8 +43,8 @@ public class ShopSearchApplicationTests {
 
     @Test
     public void delete() throws IOException, SolrServerException {
-        //solrClient.deleteById("9");
-        solrClient.deleteByQuery("goodName:华为手机");
+        solrClient.deleteById("22");
+        //solrClient.deleteByQuery("goodName:华为手机");
         solrClient.commit();
     }
 

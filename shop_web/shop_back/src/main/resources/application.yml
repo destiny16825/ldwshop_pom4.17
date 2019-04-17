@@ -1,3 +1,4 @@
+
 spring:
   thymeleaf:
     cache: false
@@ -22,3 +23,4 @@ fdfs:
    - 192.168.72.128:22122
 server:
   ip: 192.168.72.128
+  port: 8080
