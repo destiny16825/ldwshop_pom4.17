@@ -12,3 +12,4 @@ dubbo:
   #未开启服务也能启动
   consumer:
     check: false
+

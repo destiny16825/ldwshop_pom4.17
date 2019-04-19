@@ -10,6 +10,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>shop_web</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>shop_sso</module>
+    </modules>
 
 
 </project>
