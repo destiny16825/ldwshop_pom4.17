@@ -1,3 +1,4 @@
+/*
 //jsonp -> 解决跨域问题
 $(function(){
     $.ajax({
@@ -25,3 +26,22 @@ function login(){
 
     location.href = "http://localhost:8084/sso/tologin?returnUrl=" + returnUrl;
 }
+*/
+
+$(function (){
+    $.ajax({
+        url: "http://localhost:8084/sso/isLogin",
+        success:function (data) {
+            if (data!=null){
+                //已登录
+                $("#pid").html(JSON.parse(data).nickname + "您好，欢迎来到<b><a>ShopCZ商城</a></b>");
+            }else{
+                //未登录
+                $("#pid").html('[<a href="http://localhost:8084/sso/toLogin">登录</a>][<a href="http://localhost:8084/sso/toRegister">注册</a>]');
+            }
+        },
+        dataType:"jsonp",
+        jsonpCallback:"ifLogin"
+    });
+});
+

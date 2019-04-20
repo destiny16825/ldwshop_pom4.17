@@ -1,6 +1,7 @@
 package com.qf.serviceimpl;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.qf.dao.UserMapper;
 import com.qf.entity.User;
 import com.qf.service.IUserService;
@@ -33,7 +34,11 @@ public class UserServiceImpl implements IUserService {
      */
     @Override
     public User loginUser(String username, String password) {
-        return null;
+        QueryWrapper<User> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("username",username);
+        queryWrapper.eq("password",Md5Utils.md5(password));
+        User user = userMapper.selectOne(queryWrapper);
+        return user;
     }
 
     /**
